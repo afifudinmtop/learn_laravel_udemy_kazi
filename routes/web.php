@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return '<a href="/dashboard" >dashboard</a>';
@@ -9,3 +10,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('admin/index');
 });
+
+// auth controller
+Route::get('/register/', [AuthController::class, 'register_view']);
+Route::post('/register/', [AuthController::class, 'register']);
+Route::get('/login/', [AuthController::class, 'login_view']);
+Route::post('/login/', [AuthController::class, 'login']);
+Route::get('/cek/', [AuthController::class, 'cek']);
