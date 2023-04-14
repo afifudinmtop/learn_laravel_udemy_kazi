@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('admin/index');
-});
+})->middleware('onlyAdmin');
 
 // auth controller
 Route::get('/register/', [AuthController::class, 'register_view']);

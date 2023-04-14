@@ -48,11 +48,11 @@
                         @endif
 
                         {{-- success message --}}
-                        @isset($success)
-                            <div class="alert alert-success m-3">
-                                <div>{{ $success }}</div>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
                             </div>
-                        @endisset
+                        @endif
 
                         <div class="p-3">
                             <form class="form-horizontal mt-3" action="/register" method="POST">

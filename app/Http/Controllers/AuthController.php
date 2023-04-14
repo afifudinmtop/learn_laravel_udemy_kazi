@@ -32,7 +32,7 @@ class AuthController extends Controller
         ]);
 
         // redirect with success message
-        return view('/admin/auth/register', ['success' => 'created account successfully!']);
+        return back()->with('success', 'created account successfully!');
     }
 
     public function login_view()
@@ -66,12 +66,12 @@ class AuthController extends Controller
 
         // wrong username
         if (!$exist) {
-            return view('/admin/auth/login', ['error' => 'invalid username/password!']);
+            return back()->with('error', 'invalid username/password!');
         }
         
         // wrong username
         if (!Hash::check($password, $user[0]->password)) {
-            return view('/admin/auth/login', ['error' => 'invalid username/password!']);
+            return back()->with('error', 'invalid username/password!');
         }
 
         // store data session

@@ -69,18 +69,18 @@
             @endif
 
             {{-- success message --}}
-            @isset($success)
-                <div class="alert alert-success m-3">
-                    <div>{{ $success }}</div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
-            @endisset
+            @endif
 
             {{-- error message --}}
-            @isset($error)
-                <div class="alert alert-danger m-3">
-                    <div>{{ $error }}</div>
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
                 </div>
-            @endisset
+            @endif
 
             <div class="p-3">
               <form class="form-horizontal mt-3" action="/login" method="POST">
