@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FrontendController;
 
-Route::get('/', function () {
-    return '<a href="/dashboard" >dashboard</a>';
-});
+Route::get('/', [FrontendController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('admin/index');
