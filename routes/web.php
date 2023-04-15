@@ -5,7 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
 
+// frontend controller
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/homeslide_edit', [FrontendController::class, 'homeslide_edit']);
 
 Route::get('/dashboard', function () {
     return view('admin/index');
