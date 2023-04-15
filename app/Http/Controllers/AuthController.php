@@ -77,6 +77,8 @@ class AuthController extends Controller
 
         // store data session
         $request->session()->put('user_id', $user[0]->id);
+        $request->session()->put('username', $user[0]->username);
+        $request->session()->put('profile_image', $user[0]->profile_image);
 
         // all good
         return redirect('/dashboard');

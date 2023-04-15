@@ -77,13 +77,19 @@ class AdminController extends Controller
                 $oldAvatarLocation = 'public/upload/'.$oldAvatar;
                 Storage::delete($oldAvatarLocation);
             }
+
+            // store data session
+            $request->session()->put('profile_image', $filename);
         }
 
         // update username
         DB::table('user')
               ->where('id', $user_id)
               ->update(['username' => $username]);
-
+        
+        // store data session
+        $request->session()->put('username', $username);
+        
         return back()->with('success', 'profile updated successfully!');
     }
 }
