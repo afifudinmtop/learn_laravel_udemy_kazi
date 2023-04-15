@@ -28,7 +28,8 @@ class AuthController extends Controller
         // insert to db
         DB::table('user')->insert([
             'username' => $username,
-            'password' => $password
+            'password' => $password,
+            'profile_image' => 'user.png'
         ]);
 
         // redirect with success message
@@ -75,7 +76,6 @@ class AuthController extends Controller
         }
 
         // store data session
-        $request->session()->put('username', $username);
         $request->session()->put('user_id', $user[0]->id);
 
         // all good

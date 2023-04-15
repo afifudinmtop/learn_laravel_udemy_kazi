@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return '<a href="/dashboard" >dashboard</a>';
@@ -18,3 +19,8 @@ Route::get('/login/', [AuthController::class, 'login_view']);
 Route::post('/login/', [AuthController::class, 'login']);
 Route::get('/logout/', [AuthController::class, 'logout']);
 Route::get('/cek/', [AuthController::class, 'cek']);
+
+// admin controller
+Route::get('/profile/', [AdminController::class, 'profile'])->middleware('onlyAdmin');
+Route::get('/edit_profile/', [AdminController::class, 'edit_profile'])->middleware('onlyAdmin');
+Route::post('/edit_profile/', [AdminController::class, 'edit_profile_save'])->middleware('onlyAdmin');

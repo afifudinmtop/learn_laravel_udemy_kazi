@@ -60,7 +60,7 @@
             <h4 class="text-muted text-center font-size-18"><b>Sign In</b></h4>
 
             {{-- error validation --}}
-                @if ($errors->any())
+            @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-danger m-3">
                         <div>{{ $error }}</div>
@@ -121,7 +121,7 @@
                 <div class="form-group mb-0 row mt-2">
                   
                   <div class="col-sm-12 mt-3">
-                    <a href="auth-register.html" class="text-muted"
+                    <a href="/register" class="text-muted"
                       ><i class="mdi mdi-account-circle"></i> Create an
                       account</a
                     >

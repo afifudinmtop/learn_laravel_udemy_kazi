@@ -16,7 +16,7 @@ class OnlyAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->get('username')) {
+        if ($request->session()->get('user_id')) {
             return $next($request);
         }else {
             return redirect('/login/')->with('error', 'login required!');
