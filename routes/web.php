@@ -24,3 +24,5 @@ Route::get('/cek/', [AuthController::class, 'cek']);
 Route::get('/profile/', [AdminController::class, 'profile'])->middleware('onlyAdmin');
 Route::get('/edit_profile/', [AdminController::class, 'edit_profile'])->middleware('onlyAdmin');
 Route::post('/edit_profile/', [AdminController::class, 'edit_profile_save'])->middleware('onlyAdmin');
+Route::get('/change_password/', [AdminController::class, 'change_password'])->middleware('onlyAdmin');
+Route::post('/change_password/', [AdminController::class, 'change_password_save'])->middleware('onlyAdmin');

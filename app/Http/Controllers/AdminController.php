@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -91,5 +92,43 @@ class AdminController extends Controller
         $request->session()->put('username', $username);
         
         return back()->with('success', 'profile updated successfully!');
+    }
+
+    public function change_password(Request $request)
+    {
+        return view('/admin/change_password');
+    }
+
+    public function change_password_save(Request $request)
+    {
+        // assign var
+        $user_id = $request->session()->get('user_id');
+        $old_password = $request->input('old_password');
+        $new_password = $request->input('new_password');
+        $password = Hash::make($request->input('new_password'));
+
+        // validasi
+        $validated = $request->validate([
+            'new_password' => ['required', 'confirmed', 'min:3', 'max:20'],
+            'old_password' => ['required'],
+        ]);
+
+        // find on db
+        $user = DB::table('user')
+                ->where('id', '=', $user_id)
+                ->limit(1)
+                ->get();
+
+        // wrong password
+        if (!Hash::check($old_password, $user[0]->password)) {
+            return back()->with('error', 'wrong password!');
+        }
+
+        // update password
+        DB::table('user')
+              ->where('id', $user_id)
+              ->update(['password' => $password]);
+
+        return back()->with('success', 'password changed successfully!');
     }
 }
