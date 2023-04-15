@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontendController;
 // frontend controller
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/homeslide_edit', [FrontendController::class, 'homeslide_edit']);
+Route::post('/homeslide_save', [FrontendController::class, 'homeslide_save']);
 
 Route::get('/dashboard', function () {
     return view('admin/index');
