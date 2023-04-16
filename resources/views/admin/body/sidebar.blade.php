@@ -38,7 +38,7 @@
     <span>About Page Setup</span>
 </a>
 <ul class="sub-menu" aria-expanded="false">
-    <li><a href="/about">About Page</a></li>
+    <li><a href="/about_edit">About Page</a></li>
   <li><a href="/about_mulit_image">About Multi Image</a></li>
   <li><a href="/all_mulit_image">All Multi Image</a></li>
 </ul>
