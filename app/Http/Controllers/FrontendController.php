@@ -10,8 +10,20 @@ use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // find on db
+        $data_server = DB::table('homeslide')
+                ->where('id', '=', '1')
+                ->limit(1)
+                ->get();
+
+        // store data session
+        $request->session()->put('homeslide_title', $data_server[0]->title);
+        $request->session()->put('homeslide_caption', $data_server[0]->caption);
+        $request->session()->put('homeslide_video_url', $data_server[0]->video_url);
+        $request->session()->put('homeslide_image', $data_server[0]->image);
+
         return view('/frontend/index');
     }
 
